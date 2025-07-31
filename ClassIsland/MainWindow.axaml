@@ -36,7 +36,8 @@
         SizeToContent="Height"
         X11Properties.WmClass="classisland_main"
         Closing="MainWindow_OnClosing"
-        ShowActivated="False">
+        ShowActivated="False"
+        macOSProperties.CollectionBehavior="CanJoinAllSpaces">
     <Window.Resources>
         <converters1:IndexConverter x:Key="IndexConverter" />
         <converters1:ColorToColorPickerBrushConverter x:Key="ColorToColorPickerBrushConverter"/>
