@@ -208,6 +208,12 @@ public partial class MainWindow : Window
         ViewModel = new MainViewModel();
         ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
         InitializeComponent();
+        // Set window to appear on all spaces in macOS
+        if (OperatingSystem.IsMacOS())
+        {
+            PlatformServices.WindowPlatformService.SetWindowFeature(this, 
+                WindowFeatures.FullScreenAuxiliary | WindowFeatures.CanJoinAllSpaces, true);
+        }
         RulesetService.StatusUpdated += RulesetServiceOnStatusUpdated;
         TouchInFadingTimer.Tick += TouchInFadingTimerOnTick;
         IsRunningCompatibleMode = SettingsService.Settings.IsCompatibleWindowTransparentEnabled;
