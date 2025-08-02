@@ -156,6 +156,31 @@ public class WindowPlatformServices : IWindowPlatformService, IDisposable
             if ((features & WindowFeatures.SkipManagement) > 0)
             {
             }
+            
+            // Set window to appear on all spaces in macOS
+            if ((features & WindowFeatures.CanJoinAllSpaces) > 0)
+            {
+                if (state)
+                {
+                    win.CollectionBehavior |= NSWindowCollectionBehavior.CanJoinAllSpaces;
+                }
+                else
+                {
+                    win.CollectionBehavior &= ~NSWindowCollectionBehavior.CanJoinAllSpaces;
+                }
+            }
+            
+            if ((features & WindowFeatures.FullScreenAuxiliary) > 0)
+            {
+                if (state)
+                {
+                    win.CollectionBehavior |= NSWindowCollectionBehavior.FullScreenAuxiliary;
+                }
+                else
+                {
+                    win.CollectionBehavior &= ~NSWindowCollectionBehavior.FullScreenAuxiliary;
+                }
+            }
         }
         catch (Exception e)
         {
